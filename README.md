@@ -17,7 +17,7 @@ make clean
 ### To-Do
 - [X] Performance Test
 - [X] Bubble Sort
-- [ ] Selection Sort
+- [X] Selection Sort
 - [ ] Quick Sort
 - [ ] Heap Sort
 - [ ] Insertion Sort
