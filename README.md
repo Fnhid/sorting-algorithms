@@ -1,6 +1,8 @@
 # 🏗️🚧🚧🚧🚧🚧🚧🚧
 
-* If you want to change the env, please change ARRAY_SIZE & MAX_NUMBER in sort.h
+* If you want to change the maximum array size or the number of arrays, please modify ARRAY_SIZE and MAX_NUMBER in ```sort.h```
+
+* To toggle the array-printing feature, please modify PRINT_ARRAY in ```main.h```
 
 ### How to build
 build
