@@ -8,7 +8,6 @@
 #define ARRAY_SIZE 20
 #define MAX_NUMBER 1000
 //-------------------------/
-#define swap(a, b) {int tmp = a; a=b; b=tmp};
 
 using namespace std;
 using namespace std::chrono;
@@ -79,5 +78,5 @@ public:
 
 bool testSort(int arr[ARRAY_SIZE]);
 int sort(int sortIdx, int arr[ARRAY_SIZE]);
-
+void swap(int& p1, int& p2);
 void bubbleSort(int arr[ARRAY_SIZE]);

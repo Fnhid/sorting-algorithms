@@ -41,12 +41,16 @@ void bubbleSort(int arr[ARRAY_SIZE]){
     for(int i=0;i<ARRAY_SIZE;i++){
         for(int j=0;j<ARRAY_SIZE-i;j++){
             if(arr[j+1]<arr[j]) {
-                tmp = arr[j+1];
-                arr[j+1] = arr[j];
-                arr[j] = tmp; // swap two elements 
+                swap(arr[j], arr[j+1]); 
             }
         }
     }
+}
+
+void swap(int& p1, int& p2) {
+    int tmp = p1;
+    p1 = p2;
+    p2 = tmp;
 }
 
 bool testSort(int arr[ARRAY_SIZE]){
