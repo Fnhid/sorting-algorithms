@@ -1,5 +1,7 @@
 # 🏗️🚧🚧🚧🚧🚧🚧🚧
 
+* If you want to change the env, please change ARRAY_SIZE & MAX_NUMBER in sort.h
+
 ### How to build
 build
 ```bash
