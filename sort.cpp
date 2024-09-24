@@ -1,39 +1,4 @@
 #include "sort.h"
-
-void SortPerformance::setPerformance(int _performanceCase[3], int _performanceArray[10]){
-    
-    // if new sorting case is best, then change array
-    if(_performanceCase[BEST] != performanceCase[BEST]) {
-        for(int i = 0; i<ARRAY_SIZE;i++){
-            performanceArray[BEST][i] = _performanceArray[i];
-        }
-    }
-
-    // if new sorting case is worst, then change array
-    if(_performanceCase[WORST] != performanceCase[WORST]) {
-        for(int i = 0; i<ARRAY_SIZE;i++){
-            performanceArray[WORST][i] = _performanceArray[i];
-        }
-    }
-    
-    for(int i=0;i<3;i++){
-        performanceCase[i] = _performanceCase[i];    
-    }   
-
-}
-
-char* SortPerformance::getSortName(){
-    return name;
-}
-
-int* SortPerformance::getPerformanceCase(){
-    return performanceCase;
-}
-
-int** SortPerformance::getPerformanceArray(){
-    return performanceArray;
-}
-
 int sort(int sortIdx, int arr[ARRAY_SIZE]){
 
     // the array is sorted in ascending order.

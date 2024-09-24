@@ -13,9 +13,7 @@ int main(){
         SortPerformance((char *) "Shell Sort"),
         SortPerformance((char *) "Radix Sort"),
         SortPerformance((char *) "Counting Sort")
-    };
-    
-    
+    };  
     for(int iter=1;iter<ITERATION_SIZE;iter++){
         int arr[ARRAY_SIZE] = {};
         randomArrGen(arr);
@@ -55,7 +53,7 @@ int main(){
             continue;
         }
 
-        cout << "[*]" << sortPerformances[sortIdx].getSortName() << endl;
+        cout << "[*] " << sortPerformances[sortIdx].getSortName() << endl;
         // print best time, array
         cout << "Best: " << performanceCase[BEST] << " ns" << endl;
         cout << "[";

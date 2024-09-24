@@ -4,9 +4,10 @@
 #include <chrono>
 #include <cstring>
 
-#define ARRAY_SIZE 10
-#define MAX_NUMBER 100
-
+//-------[EDIT THIS]-------/
+#define ARRAY_SIZE 20
+#define MAX_NUMBER 1000
+//-------------------------/
 #define swap(a, b) {int tmp = a; a=b; b=tmp};
 
 using namespace std;
@@ -43,11 +44,37 @@ public:
         }
         delete[] performanceArray;
     }
-    char* getSortName();
-    int* getPerformanceCase();
-    int** getPerformanceArray();
-    void setPerformance(int* _performanceCase, int* _performanceArray);
+    char* getSortName(){
+        return name;
+    }
+    int* getPerformanceCase(){
+        return performanceCase;
+    }
+    int** getPerformanceArray(){
+        return performanceArray;
+    }
+    
+    void setPerformance(int _performanceCase[3], int _performanceArray[10]){
+        
+        // if new sorting case is best, then change array
+        if(_performanceCase[BEST] != performanceCase[BEST]) {
+            for(int i = 0; i<ARRAY_SIZE;i++){
+                performanceArray[BEST][i] = _performanceArray[i];
+            }
+        }
 
+        // if new sorting case is worst, then change array
+        if(_performanceCase[WORST] != performanceCase[WORST]) {
+            for(int i = 0; i<ARRAY_SIZE;i++){
+                performanceArray[WORST][i] = _performanceArray[i];
+            }
+        }
+        
+        for(int i=0;i<3;i++){
+            performanceCase[i] = _performanceCase[i];    
+        }   
+
+    }
 };
 
 bool testSort(int arr[ARRAY_SIZE]);
