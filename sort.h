@@ -5,8 +5,8 @@
 #include <cstring>
 
 //-------[EDIT THIS]-------/
-#define ARRAY_SIZE 20
-#define MAX_NUMBER 1000
+#define ARRAY_SIZE 60
+#define MAX_NUMBER 1000000
 //-------------------------/
 
 using namespace std;
@@ -76,7 +76,12 @@ public:
     }
 };
 
-bool testSort(int arr[ARRAY_SIZE]);
 int sort(int sortIdx, int arr[ARRAY_SIZE]);
-void swap(int& p1, int& p2);
+
+// sorts
 void bubbleSort(int arr[ARRAY_SIZE]);
+void selectionSort(int arr[ARRAY_SIZE]);
+
+
+void swap(int& p1, int& p2);
+bool testSort(int arr[ARRAY_SIZE]);

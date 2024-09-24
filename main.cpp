@@ -26,11 +26,13 @@ int main(){
         cout << "Iteration "  << iter << endl;
         
         for(int sortIdx=0;sortIdx<9;sortIdx++){
+            
             performanceTime = sort(sortIdx, arr);
             if(performanceTime == -1){
                 sortPerformanceError[sortIdx] = true;
                 continue;
             } // case handling
+
             int* performanceCase = sortPerformances[sortIdx].getPerformanceCase();
             int tmpArr[3] = {
                     min(performanceTime, performanceCase[0]), 
@@ -61,22 +63,27 @@ int main(){
         cout << "[*] " << sortPerformances[sortIdx].getSortName() << endl;
         // print best time, array
         cout << "Best: " << performanceCase[BEST] << " ns" << endl;
-        cout << "[";
-        for(int arrIdx = 0; arrIdx < ARRAY_SIZE; arrIdx++) {
-            cout << performanceArray[BEST][arrIdx] << " ";
+            
+        if(PRINT_ARRAY){
+            cout << "[";
+            for(int arrIdx = 0; arrIdx < ARRAY_SIZE; arrIdx++) {
+                cout << performanceArray[BEST][arrIdx] << " ";
+            }
+            cout << "]" << endl;
         }
-        cout << "]" << endl;
-         
         // print worst time, array 
         cout << "Worst: " << performanceCase[WORST] << " ns" << endl;
-        cout << "[";
-        for(int arrIdx = 0; arrIdx < ARRAY_SIZE; arrIdx++) {
-            cout << performanceArray[WORST][arrIdx] << " ";
+        
+        if(PRINT_ARRAY){
+            cout << "[";
+            for(int arrIdx = 0; arrIdx < ARRAY_SIZE; arrIdx++) {
+                cout << performanceArray[WORST][arrIdx] << " ";
+            }
+            cout << "]" << endl;
         }
-        cout << "]" << endl;
          
 
-        cout << "Avg: " << performanceCase[AVERAGE] << " ns" << endl;
+        cout << "Avg: " << performanceCase[AVERAGE] << " ns\n\n" << endl;
          
     }
 

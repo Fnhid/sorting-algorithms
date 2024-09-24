@@ -1,4 +1,5 @@
 #include "sort.h"
+
 int sort(int sortIdx, int arr[ARRAY_SIZE]){
 
     // the array is sorted in ascending order.
@@ -7,6 +8,10 @@ int sort(int sortIdx, int arr[ARRAY_SIZE]){
     switch (sortIdx) {
         case 0: {
             bubbleSort(arr);
+            break;
+        } 
+        case 1: {
+            selectionSort(arr);
             break;
         }
 
@@ -31,9 +36,6 @@ int sort(int sortIdx, int arr[ARRAY_SIZE]){
         cout << "]";
         return -1;
     }
-
-    
-
 }
 
 void bubbleSort(int arr[ARRAY_SIZE]){
@@ -46,6 +48,22 @@ void bubbleSort(int arr[ARRAY_SIZE]){
         }
     }
 }
+
+void selectionSort(int arr[ARRAY_SIZE]){
+    int min;
+    for(int i=0;i<ARRAY_SIZE-1;i++){
+        min = i;
+        for(int j=i;j<ARRAY_SIZE;j++){
+            if(arr[min] > arr[j]) {
+                min = j;
+            }
+        }
+        if(min != i) {
+            swap(arr[min], arr[i]);
+        }
+    }
+}
+
 
 void swap(int& p1, int& p2) {
     int tmp = p1;
