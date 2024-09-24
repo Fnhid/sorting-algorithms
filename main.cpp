@@ -14,6 +14,8 @@ int main(){
         SortPerformance((char *) "Radix Sort"),
         SortPerformance((char *) "Counting Sort")
     };  
+    bool sortPerformanceError[9] = {false};
+
     for(int iter=1;iter<ITERATION_SIZE;iter++){
         int arr[ARRAY_SIZE] = {};
         randomArrGen(arr);
@@ -26,7 +28,7 @@ int main(){
         for(int sortIdx=0;sortIdx<9;sortIdx++){
             performanceTime = sort(sortIdx, arr);
             if(performanceTime == -1){
-                cout << "There were some issue(s) while performing " << sortPerformances[sortIdx].getSortName() << endl;
+                sortPerformanceError[sortIdx] = true;
                 continue;
             } // case handling
             int* performanceCase = sortPerformances[sortIdx].getPerformanceCase();
@@ -35,7 +37,6 @@ int main(){
                     max(performanceTime, performanceCase[1]), 
                     (performanceCase[2] * (iter-1) + performanceTime) / iter
             };
-            cout << tmpArr[0] << " " << tmpArr[1] << " " << tmpArr[2];
             sortPerformances[sortIdx].setPerformance(tmpArr, arr); 
             
         }
@@ -44,14 +45,18 @@ int main(){
 
     cout << "Iteration completed." << endl;
 
-    cout <<"======[Result]======" << endl;
-    for(int sortIdx=0;sortIdx<1;sortIdx++){
+    cout <<"\n\n======[Result]======\n" << endl;
+    for(int sortIdx=0;sortIdx<2;sortIdx++){
         int* performanceCase = sortPerformances[sortIdx].getPerformanceCase();
         int** performanceArray = sortPerformances[sortIdx].getPerformanceArray();
-        if(performanceCase[1]==0){
-            cout << "[!] No Record" << endl;
+        if(sortPerformanceError[sortIdx] == true){
+            cout << "There were some issue(s) while performing " << sortPerformances[sortIdx].getSortName() << endl;
             continue;
         }
+        else if(performanceCase[1]==0){
+            cout << "[!] No Record" << endl;
+            continue;
+        } 
 
         cout << "[*] " << sortPerformances[sortIdx].getSortName() << endl;
         // print best time, array
