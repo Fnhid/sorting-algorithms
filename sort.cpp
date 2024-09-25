@@ -3,8 +3,8 @@
 int sort(int sortIdx, int arr[ARRAY_SIZE]){
 
     // the array is sorted in ascending order.
-    
     system_clock::time_point startTime = system_clock::now();
+    
     switch (sortIdx) {
         case 0: {
             bubbleSort(arr);
@@ -14,11 +14,18 @@ int sort(int sortIdx, int arr[ARRAY_SIZE]){
             selectionSort(arr);
             break;
         }
+        case 2: {
+            quickSort(arr, 0, ARRAY_SIZE-1);
+            break;
+        }
 
         default: {
             return -1;
         }
     }
+    
+    
+
     system_clock::time_point stopTime = system_clock::now();
 
     nanoseconds diffTime = duration_cast<nanoseconds>(stopTime - startTime);
@@ -64,6 +71,48 @@ void selectionSort(int arr[ARRAY_SIZE]){
     }
 }
 
+void quickSort(int arr[ARRAY_SIZE], int low, int high){
+    if(low >= high) return; // base condition
+    
+    int left = low;
+    int right = high;
+    int pivot = selectPivotIdx(arr, left, right);
+    int temp;
+
+    while(left <= right)
+    {
+        while (arr[left] < arr[pivot]) {
+            left++;
+        }
+        while (arr[right] > arr[pivot]){
+            right--;
+        }
+        if (left <= right){
+            swap(arr[left], arr[right]);
+            left++;
+            right--;
+        }
+    }
+
+    if(right > low)
+        quickSort(arr, low, right);
+    if(left < high)
+        quickSort(arr, left, high);
+    
+
+
+}
+
+int selectPivotIdx(int arr[ARRAY_SIZE], int low, int high){
+    int p1 = arr[low];
+    int p2 = arr[high];
+    int p3 = arr[(high + low) / 2];
+
+    if(p2 <= p1 && p1 <= p3 || p3 <= p1 && p1 <= p2) return low;
+    else if(p1 <= p2 && p2 <= p3 || p3 <= p2 && p2 <= p1) return high;
+    else return (high+low)/2;
+    
+}
 
 void swap(int& p1, int& p2) {
     int tmp = p1;

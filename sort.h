@@ -5,8 +5,8 @@
 #include <cstring>
 
 //-------[EDIT THIS]-------/
-#define ARRAY_SIZE 60
-#define MAX_NUMBER 1000000
+#define ARRAY_SIZE 6000
+#define MAX_NUMBER 10000
 //-------------------------/
 
 using namespace std;
@@ -21,7 +21,7 @@ enum PerformanceType {
 class SortPerformance {
 private:
     char* name;
-    int performanceCase[3] = {MAX_NUMBER, 0, 0}; // 0 : best, 1 : worst, 2 : average 
+    long long performanceCase[3] = {MAX_NUMBER, 0, 0}; // 0 : best, 1 : worst, 2 : average 
     int** performanceArray;  // 0 : best, 1 : worst
 public:
     SortPerformance(char* _name){
@@ -46,14 +46,14 @@ public:
     char* getSortName(){
         return name;
     }
-    int* getPerformanceCase(){
+    long long* getPerformanceCase(){
         return performanceCase;
     }
     int** getPerformanceArray(){
         return performanceArray;
     }
     
-    void setPerformance(int _performanceCase[3], int _performanceArray[10]){
+    void setPerformance(long long _performanceCase[3], int _performanceArray[10]){
         
         // if new sorting case is best, then change array
         if(_performanceCase[BEST] != performanceCase[BEST]) {
@@ -81,7 +81,10 @@ int sort(int sortIdx, int arr[ARRAY_SIZE]);
 // sorts
 void bubbleSort(int arr[ARRAY_SIZE]);
 void selectionSort(int arr[ARRAY_SIZE]);
+void quickSort(int arr[ARRAY_SIZE], int low, int high);
 
 
+// lemma functions
 void swap(int& p1, int& p2);
+int selectPivotIdx(int arr[ARRAY_SIZE], int low, int high);
 bool testSort(int arr[ARRAY_SIZE]);
