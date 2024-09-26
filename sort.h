@@ -76,6 +76,8 @@ public:
     }
 };
 
+
+
 int sort(int sortIdx, int arr[ARRAY_SIZE]);
 
 // sorts
@@ -84,7 +86,7 @@ void selectionSort(int arr[ARRAY_SIZE]);
 void quickSort(int arr[ARRAY_SIZE], int low, int high);
 
 
-// lemma functions
+// lemma things
 void swap(int& p1, int& p2);
 int selectPivotIdx(int arr[ARRAY_SIZE], int low, int high);
 bool testSort(int arr[ARRAY_SIZE]);
