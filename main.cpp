@@ -9,11 +9,11 @@ int main(){
     // false: Algorithm is disabled and will be skipped.
 
     bool isSortingEnabled[NUM_SORTS] = {
-        true,           // Bubble Sort
+        false,           // Bubble Sort
         false,           // Selection Sort
-        true,           // Quick Sort
+        false,           // Quick Sort
         false,          // Heap Sort
-        false,          // Insertion Sort
+        true,          // Insertion Sort
         false,          // Merge Sort
         false,          // Shell Sort
         false,          // Radix Sort
@@ -49,7 +49,7 @@ int main(){
 
         // Code about Progress Bar
         cout << (iter * 100 / ITERATION_SIZE) << "% ["; 
-        for (int progressBar = 0; progressBar < (iter * 100 / ITERATION_SIZE) / 5 ; progressBar++){
+        for (int progressBar = 1; progressBar < (iter * 100 / ITERATION_SIZE) / 5 ; progressBar++){
             cout << "=";
         }
         cout << ">";
