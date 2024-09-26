@@ -7,6 +7,13 @@
 //-------[EDIT THIS]-------/
 #define ARRAY_SIZE 6000
 #define MAX_NUMBER 10000
+#define ITERATION_SIZE 1000
+
+// when PRINT_ARRAY is defined as true, the {best, worst} array is printed.
+// when PRINT_ARRAY is defined as false, this feature is disabled
+
+#define PRINT_ARRAY false
+
 //-------------------------/
 
 using namespace std;
@@ -84,6 +91,8 @@ int sort(int sortIdx, int arr[ARRAY_SIZE]);
 void bubbleSort(int arr[ARRAY_SIZE]);
 void selectionSort(int arr[ARRAY_SIZE]);
 void quickSort(int arr[ARRAY_SIZE], int low, int high);
+
+void insertionSort(int arr[ARRAY_SIZE]);
 
 
 // lemma things

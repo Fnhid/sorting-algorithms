@@ -18,6 +18,10 @@ int sort(int sortIdx, int arr[ARRAY_SIZE]){
             quickSort(arr, 0, ARRAY_SIZE-1);
             break;
         }
+        case 4: {
+            insertionSort(arr);
+            break;
+        }
 
         default: {
             return -1;
@@ -36,11 +40,13 @@ int sort(int sortIdx, int arr[ARRAY_SIZE]){
     }
     else {
         cerr << "Warning : The array is not sorted correctly." << endl;
-        cout << "[";
-        for(int i=0;i<ARRAY_SIZE;i++) {
-            cout << arr[i] << " ";
+        if(PRINT_ARRAY == true){
+            cout << "[";
+            for(int i=0;i<ARRAY_SIZE;i++) {
+                cout << arr[i] << ", ";
+            }
+            cout << "]";    
         }
-        cout << "]";
         return -1;
     }
 }
@@ -103,6 +109,21 @@ void quickSort(int arr[ARRAY_SIZE], int low, int high){
 
 }
 
+void insertionSort(int arr[ARRAY_SIZE]){
+    int i, j, key;
+    for(i=1;i<ARRAY_SIZE;i++) {
+        key = arr[i];
+
+        for(j=i-1; j>=0 && arr[j] > key; j--){
+            arr[j+1] = arr[j];
+        }
+        arr[j+1] = key;
+    }   
+}
+
+
+//-----------
+
 int selectPivotIdx(int arr[ARRAY_SIZE], int low, int high){
     int p1 = arr[low];
     int p2 = arr[high];
@@ -121,12 +142,12 @@ void swap(int& p1, int& p2) {
 }
 
 bool testSort(int arr[ARRAY_SIZE]){
-    for(int i=0;i<ARRAY_SIZE;i++){
+    for(int i=0;i<ARRAY_SIZE-1;i++){
         if(arr[i] > arr[i+1]){
             // not sorted correctly
+            cout << "[?] idx " << i << ": " << arr[i] << ", idx " << i+1 << ": " << arr[i+1] << endl;
             return false;
         }
-        
     }
     return true;
 }
