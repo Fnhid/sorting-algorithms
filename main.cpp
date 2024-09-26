@@ -7,11 +7,11 @@ int main(){
     // Determines whether each sorting algorithm is enabled for execution.
     // true: Algorithm is enabled and will be executed.
     // false: Algorithm is disabled and will be skipped.
-    
-    bool isSortingEnabled[9] = {
+
+    bool isSortingEnabled[NUM_SORTS] = {
         true,           // Bubble Sort
         false,           // Selection Sort
-        false,           // Quick Sort
+        true,           // Quick Sort
         false,          // Heap Sort
         false,          // Insertion Sort
         false,          // Merge Sort
@@ -22,7 +22,8 @@ int main(){
     //--------------------------/
 
     // Init
-    SortPerformance sortPerformances[9]= {
+    
+    SortPerformance sortPerformances[NUM_SORTS]= {
         SortPerformance((char *) "Bubble Sort"),
         SortPerformance((char *) "Selection Sort"),
         SortPerformance((char *) "Quick Sort"),
@@ -33,7 +34,8 @@ int main(){
         SortPerformance((char *) "Radix Sort"),
         SortPerformance((char *) "Counting Sort")
     };  
-    bool sortPerformanceError[9] = {false};
+
+    bool sortPerformanceError[NUM_SORTS] = {false};
     
     cout << "[Iteration]" << endl;
 
@@ -45,8 +47,8 @@ int main(){
         int* performanceCase;
         
 
-        //
-        cout << (iter * 100 / ITERATION_SIZE) << "% | ["; 
+        // Code about Progress Bar
+        cout << (iter * 100 / ITERATION_SIZE) << "% ["; 
         for (int progressBar = 0; progressBar < (iter * 100 / ITERATION_SIZE) / 5 ; progressBar++){
             cout << "=";
         }
@@ -56,9 +58,9 @@ int main(){
         }
         cout << "]";
         cout << " ("  << iter << " / " << ITERATION_SIZE <<")\r" << flush;
-        //
+        //------------------------
 
-        for(int sortIdx=0;sortIdx<9;sortIdx++){
+        for(int sortIdx=0;sortIdx<NUM_SORTS;sortIdx++){
 
             if (isSortingEnabled[sortIdx] == false){
                 continue;
@@ -86,7 +88,7 @@ int main(){
     cout <<"\n\n======[Result]======\n" << endl;
     
     
-        for(int sortIdx=0; sortIdx < 9; sortIdx++){
+        for(int sortIdx=0; sortIdx < NUM_SORTS; sortIdx++){
             long long* performanceCase = sortPerformances[sortIdx].getPerformanceCase();
             int** performanceArray = sortPerformances[sortIdx].getPerformanceArray();
             if(sortPerformanceError[sortIdx] == true){

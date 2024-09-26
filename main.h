@@ -1,7 +1,7 @@
 #pragma once
 #include "sort.h"
 
-#define NUM_OF_COMPLETED_SORT_ALGOS 3
+#define NUM_SORTS 9
 
 //-------[EDIT THIS]-------/
 #define ITERATION_SIZE 1000
