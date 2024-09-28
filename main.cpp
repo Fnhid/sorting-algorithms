@@ -13,8 +13,8 @@ int main(){
         false,           // Selection Sort
         false,           // Quick Sort
         false,          // Heap Sort
-        true,          // Insertion Sort
-        false,          // Merge Sort
+        false,          // Insertion Sort
+        true,          // Merge Sort
         false,          // Shell Sort
         false,          // Radix Sort
         false           // Counting Sort
