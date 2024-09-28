@@ -26,7 +26,11 @@ int sort(int sortIdx, int arr[ARRAY_SIZE]){
             break;
         }
         case 5: {
-            mergeSort(arr,0, ARRAY_SIZE-1);
+            mergeSort(arr, 0, ARRAY_SIZE-1);
+            break;
+        }
+        case 6: {
+            shellSort(arr);
             break;
         }
 
@@ -36,7 +40,6 @@ int sort(int sortIdx, int arr[ARRAY_SIZE]){
     }
     
     
-
     system_clock::time_point stopTime = system_clock::now();
 
     nanoseconds diffTime = duration_cast<nanoseconds>(stopTime - startTime);
@@ -128,6 +131,19 @@ void insertionSort(int arr[ARRAY_SIZE]){
     }   
 }
 
+// this insertionSort is used for shellSort
+void insertionSort(int arr[ARRAY_SIZE], int low, int high, int gap){
+    int i, j, key;
+    for(i = low ; i <= high ; i += gap) {
+        key = arr[i];
+
+        for(j = i - gap; j >= low && arr[j] > key; j -= gap){
+            arr[j+gap] = arr[j];
+        }
+        arr[j+gap] = key;
+    }   
+}
+
 void mergeSort(int arr[ARRAY_SIZE], int low, int high){
     // Recursively divide the arr until each sublist contains only one element
     if(low<high){ 
@@ -137,6 +153,18 @@ void mergeSort(int arr[ARRAY_SIZE], int low, int high){
 
         // Merge the divided sublists
         merge(arr, low, high);
+    }
+}
+
+void shellSort(int arr[ARRAY_SIZE]){
+    int i, gap;
+    for(gap = ARRAY_SIZE / 2; gap > 0 ; gap /= 2) {
+        if(gap % 2 == 0){
+            gap++;
+        } 
+        for (i = 0; i < gap; i++){
+            insertionSort(arr, i, ARRAY_SIZE-1, gap);
+        }
     }
 }
 

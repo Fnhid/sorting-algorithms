@@ -13,9 +13,9 @@ int main(){
         false,           // Selection Sort
         false,           // Quick Sort
         false,          // Heap Sort
-        false,          // Insertion Sort
-        true,          // Merge Sort
-        false,          // Shell Sort
+        true,          // Insertion Sort
+        false,          // Merge Sort
+        true,          // Shell Sort
         false,          // Radix Sort
         false           // Counting Sort
     };
@@ -42,7 +42,6 @@ int main(){
     for(int iter=1;iter<=ITERATION_SIZE;iter++){
         int arr[ARRAY_SIZE] = {};
         genRandomArr(arr);
-        
         int performanceTime;
         int* performanceCase;
         
@@ -84,15 +83,26 @@ int main(){
     }
 
     cout << "\nIteration completed." << endl;
-    
+     
     cout <<"\n\n======[Result]======\n" << endl;
     
     
         for(int sortIdx=0; sortIdx < NUM_SORTS; sortIdx++){
+            if (isSortingEnabled[sortIdx] == false){
+                continue;
+            }
             long long* performanceCase = sortPerformances[sortIdx].getPerformanceCase();
             int** performanceArray = sortPerformances[sortIdx].getPerformanceArray();
             if(sortPerformanceError[sortIdx] == true){
                 cout << "There were some issue(s) while performing " << sortPerformances[sortIdx].getSortName() << endl;
+               if(PRINT_ARRAY){
+                cout << "[";
+                for(int arrIdx = 0; arrIdx < ARRAY_SIZE; arrIdx++) {
+                    cout << performanceArray[WORST][arrIdx] << " ";
+                }
+                cout << "]" << endl;
+            }
+            
                 continue;
             }
             else if(performanceCase[1]==0){
@@ -104,25 +114,9 @@ int main(){
             cout << "[*] " << sortPerformances[sortIdx].getSortName() << endl;
             // print best time, array
             cout << "Best: " << performanceCase[BEST] / 1000 << " µs (" << performanceCase[BEST] << " ns)" << endl;
-                
-            if(PRINT_ARRAY){
-                cout << "[";
-                for(int arrIdx = 0; arrIdx < ARRAY_SIZE; arrIdx++) {
-                    cout << performanceArray[BEST][arrIdx] << " ";
-                }
-                cout << "]" << endl;
-            }
+    
             // print worst time, array 
             cout << "Worst: " << performanceCase[WORST] / 1000 << " µs (" << performanceCase[WORST] << " ns)" << endl;
-            
-            if(PRINT_ARRAY){
-                cout << "[";
-                for(int arrIdx = 0; arrIdx < ARRAY_SIZE; arrIdx++) {
-                    cout << performanceArray[WORST][arrIdx] << " ";
-                }
-                cout << "]" << endl;
-            }
-            
 
             cout << "Avg: " << performanceCase[AVERAGE] / 1000 << " µs (" << performanceCase[AVERAGE] << " ns)\n" << endl;
             
