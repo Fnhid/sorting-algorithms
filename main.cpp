@@ -95,14 +95,7 @@ int main(){
             int** performanceArray = sortPerformances[sortIdx].getPerformanceArray();
             if(sortPerformanceError[sortIdx] == true){
                 cout << "There were some issue(s) while performing " << sortPerformances[sortIdx].getSortName() << endl;
-               if(PRINT_ARRAY){
-                cout << "[";
-                for(int arrIdx = 0; arrIdx < ARRAY_SIZE; arrIdx++) {
-                    cout << performanceArray[WORST][arrIdx] << " ";
-                }
-                cout << "]" << endl;
-            }
-            
+           
                 continue;
             }
             else if(performanceCase[1]==0){
@@ -118,8 +111,24 @@ int main(){
             // print best time, array
             cout << "Best: " << performanceCase[BEST] / 1000 << " µs (" << performanceCase[BEST] << " ns)" << endl;
             
+            if(PRINT_ARRAY){
+                cout << "[";
+                for(int arrIdx = 0; arrIdx < ARRAY_SIZE; arrIdx++) {
+                    cout << performanceArray[BEST][arrIdx] << " ";
+                }
+                cout << "]" << endl;
+            }
             // print worst time, array 
             cout << "Worst: " << performanceCase[WORST] / 1000 << " µs (" << performanceCase[WORST] << " ns)" << endl;
+
+            if(PRINT_ARRAY){
+                cout << "[";
+                for(int arrIdx = 0; arrIdx < ARRAY_SIZE; arrIdx++) {
+                    cout << performanceArray[WORST][arrIdx] << " ";
+                }
+                cout << "]" << endl;
+            }
+
 
             cout << "Avg: " << performanceCase[AVERAGE] / 1000 << " µs (" << performanceCase[AVERAGE] << " ns)\n" << endl;
             

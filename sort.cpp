@@ -50,13 +50,6 @@ int sort(int sortIdx, int arr[ARRAY_SIZE]){
     }
     else {
         cerr << "\nWarning : The array is not sorted correctly." << endl;
-        if(PRINT_ARRAY == true){
-            cout << "[";
-            for(int i=0;i<ARRAY_SIZE;i++) {
-                cout << arr[i] << ", ";
-            }
-            cout << "]\n";    
-        }
         return -1;
     }
 }
