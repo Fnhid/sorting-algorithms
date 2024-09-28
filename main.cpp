@@ -112,9 +112,12 @@ int main(){
             } 
 
             cout << "[*] " << sortPerformances[sortIdx].getSortName() << endl;
+            if(performanceCase[WORST] < 0) {
+                cout << "[?] Warning: Time value too large, overflow may have occurred" << endl;
+            }
             // print best time, array
             cout << "Best: " << performanceCase[BEST] / 1000 << " µs (" << performanceCase[BEST] << " ns)" << endl;
-    
+            
             // print worst time, array 
             cout << "Worst: " << performanceCase[WORST] / 1000 << " µs (" << performanceCase[WORST] << " ns)" << endl;
 
