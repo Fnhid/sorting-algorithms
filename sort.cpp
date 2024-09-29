@@ -2,44 +2,42 @@
 
 int sort(int sortIdx, int arr[ARRAY_SIZE]){
 
+    int *arrTmp = new int[ARRAY_SIZE];
+    memcpy(arrTmp, arr, sizeof(int) * ARRAY_SIZE);
+
     // the array is sorted in ascending order.
     system_clock::time_point startTime = system_clock::now();
-    
-    // cout << "before";
-    // for(int arrIdx = 0; arrIdx < ARRAY_SIZE; arrIdx++) {
-    //                 cout << arr[arrIdx] << " ";
-    // }
-    // cout << "\n";
+
     switch (sortIdx) {
         case 0: {
-            bubbleSort(arr);
+            bubbleSort(arrTmp);
             break;
         } 
         case 1: {
-            selectionSort(arr);
+            selectionSort(arrTmp);
             break;
         }
         case 2: {
-            quickSort(arr, 0, ARRAY_SIZE-1);
+            quickSort(arrTmp, 0, ARRAY_SIZE-1);
             break;
         }
         case 3: { // heapSort
             return -1; // 🚧🚧
         }
         case 4: {
-            insertionSort(arr);
+            insertionSort(arrTmp);
             break;
         }
         case 5: {
-            mergeSort(arr, 0, ARRAY_SIZE-1);
+            mergeSort(arrTmp, 0, ARRAY_SIZE-1);
             break;
         }
         case 6: {
-            shellSort(arr);
+            shellSort(arrTmp);
             break;
         }
         case 7: {
-            radixSort(arr);
+            radixSort(arrTmp);
             break;
         }
 
@@ -47,25 +45,23 @@ int sort(int sortIdx, int arr[ARRAY_SIZE]){
             return -1;
         }
     }
-
-    // cout << "after";
-    // for(int arrIdx = 0; arrIdx < ARRAY_SIZE; arrIdx++) {
-    //                 cout << arr[arrIdx] << " ";
-    // }
-    // cout << "\n";
     
     system_clock::time_point stopTime = system_clock::now();
 
     nanoseconds diffTime = duration_cast<nanoseconds>(stopTime - startTime);
     
+
     // test if array is sorted correctly
-    if (testSort(arr) == true) {
+    if (testSort(arrTmp) == true) {
+        delete arrTmp;
         return (diffTime.count());
     }
     else {
         cerr << "\nWarning : The array is not sorted correctly." << endl;
+        delete arrTmp;
         return -1;
     }
+
 }
 
 void bubbleSort(int arr[ARRAY_SIZE]){
