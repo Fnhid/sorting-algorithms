@@ -18,8 +18,19 @@ int sort(int sortIdx, int arr[ARRAY_SIZE]){
             quickSort(arr, 0, ARRAY_SIZE-1);
             break;
         }
+        case 3: { // heapSort
+            return -1; // 🚧🚧
+        }
         case 4: {
             insertionSort(arr);
+            break;
+        }
+        case 5: {
+            mergeSort(arr, 0, ARRAY_SIZE-1);
+            break;
+        }
+        case 6: {
+            shellSort(arr);
             break;
         }
 
@@ -29,7 +40,6 @@ int sort(int sortIdx, int arr[ARRAY_SIZE]){
     }
     
     
-
     system_clock::time_point stopTime = system_clock::now();
 
     nanoseconds diffTime = duration_cast<nanoseconds>(stopTime - startTime);
@@ -39,14 +49,7 @@ int sort(int sortIdx, int arr[ARRAY_SIZE]){
         return (diffTime.count());
     }
     else {
-        cerr << "Warning : The array is not sorted correctly." << endl;
-        if(PRINT_ARRAY == true){
-            cout << "[";
-            for(int i=0;i<ARRAY_SIZE;i++) {
-                cout << arr[i] << ", ";
-            }
-            cout << "]";    
-        }
+        cerr << "\nWarning : The array is not sorted correctly." << endl;
         return -1;
     }
 }
@@ -121,6 +124,42 @@ void insertionSort(int arr[ARRAY_SIZE]){
     }   
 }
 
+// this insertionSort is used for shellSort
+void insertionSort(int arr[ARRAY_SIZE], int low, int high, int gap){
+    int i, j, key;
+    for(i = low ; i <= high ; i += gap) {
+        key = arr[i];
+
+        for(j = i - gap; j >= low && arr[j] > key; j -= gap){
+            arr[j+gap] = arr[j];
+        }
+        arr[j+gap] = key;
+    }   
+}
+
+void mergeSort(int arr[ARRAY_SIZE], int low, int high){
+    // Recursively divide the arr until each sublist contains only one element
+    if(low<high){ 
+        int mid = (low + high) / 2;
+        mergeSort(arr, low, mid);
+        mergeSort(arr, mid+1, high);
+
+        // Merge the divided sublists
+        merge(arr, low, high);
+    }
+}
+
+void shellSort(int arr[ARRAY_SIZE]){
+    int i, gap;
+    for(gap = ARRAY_SIZE / 2; gap > 0 ; gap /= 2) {
+        if(gap % 2 == 0){
+            gap++;
+        } 
+        for (i = 0; i < gap; i++){
+            insertionSort(arr, i, ARRAY_SIZE-1, gap);
+        }
+    }
+}
 
 //-----------
 
@@ -135,6 +174,38 @@ int selectPivotIdx(int arr[ARRAY_SIZE], int low, int high){
     
 }
 
+void merge(int arr[ARRAY_SIZE], int low, int high){
+    // sorted[] is a temporary sublist used to merge two divided sublists. 
+    // After storing in sorted[] through the following process, the contents of sorted[] are then saved in arr[].
+    int* sorted = new int[high - low + 1];
+    int i, j, k;
+    int mid = (high + low) / 2;
+    i = low; // left arr idx
+    j = mid + 1; // right arr idx
+    k = 0; // sorted arr idx
+
+    while (i <= mid && j <= high){
+        if(arr[i] <= arr[j]) {
+            sorted[k++] = arr[i++];
+        }
+        else {   
+            sorted[k++] = arr[j++];
+        }
+    }
+
+    if (i > mid)
+        while(j<=high) sorted[k++] = arr[j++];
+    else
+        while(i<=mid) sorted[k++] = arr[i++];
+        
+
+    for(i = low, k=0 ; i <= high ; i++, k++) {
+        arr[i] = sorted[k];
+    }
+
+    delete[] sorted;
+}
+
 void swap(int& p1, int& p2) {
     int tmp = p1;
     p1 = p2;
@@ -145,7 +216,7 @@ bool testSort(int arr[ARRAY_SIZE]){
     for(int i=0;i<ARRAY_SIZE-1;i++){
         if(arr[i] > arr[i+1]){
             // not sorted correctly
-            cout << "[?] idx " << i << ": " << arr[i] << ", idx " << i+1 << ": " << arr[i+1] << endl;
+            cout << "[?] { idx " << i << ": " << arr[i] << ", idx " << i+1 << ": " << arr[i+1] << " }\n"<< endl;
             return false;
         }
     }
