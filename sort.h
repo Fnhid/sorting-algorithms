@@ -4,6 +4,9 @@
 #include <chrono>
 #include <cstring>
 #include <queue>
+#include <algorithm>
+
+#define LLONG_MAX 9223372036854775807
 
 //-------[EDIT THIS]-------/
 #define ARRAY_SIZE 10
@@ -29,7 +32,7 @@ enum PerformanceType {
 class SortPerformance {
 private:
     char* name;
-    long long performanceCase[3] = {MAX_NUMBER, 0, 0}; // 0 : best, 1 : worst, 2 : average 
+    long long performanceCase[3] = {LLONG_MAX, 0, 0}; // 0 : best, 1 : worst, 2 : average 
     int** performanceArray;  // 0 : best, 1 : worst
 public:
     SortPerformance(char* _name){

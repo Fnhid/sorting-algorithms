@@ -10,13 +10,13 @@ int main(){
 
     bool isSortingEnabled[NUM_SORTS] = {
         false,           // Bubble Sort
-        true,           // Selection Sort
+        false,           // Selection Sort
         true,           // Quick Sort
         false,          // Heap Sort
         false,          // Insertion Sort
         false,          // Merge Sort
         false,          // Shell Sort
-        true,          // Radix Sort
+        false,          // Radix Sort
         false           // Counting Sort
     };
     //--------------------------/
@@ -72,8 +72,8 @@ int main(){
 
             long long* performanceCase = sortPerformances[sortIdx].getPerformanceCase();
             long long tmpArr[3] = {
-                    min(performanceTime, (int) performanceCase[0]), 
-                    max(performanceTime, (int) performanceCase[1]), 
+                    min(performanceTime, performanceCase[0]), 
+                    max(performanceTime, performanceCase[1]), 
                     (performanceCase[2] * (iter-1) + performanceTime) / iter
             };
             sortPerformances[sortIdx].setPerformance(tmpArr, arr); 
@@ -147,5 +147,23 @@ void genRandomArr(int* arr){
     for(int i=0;i<ARRAY_SIZE;i++){
         uniform_int_distribution<int> dist(1, MAX_NUMBER);
         arr[i] = dist(mt);
+    }
+}
+
+long long min(long long a, long long b){
+    if (a > b) {
+        return b; 
+    }
+    else {
+        return a;
+    }
+}
+
+long long max(long long a, long long b){
+    if (a < b) {
+        return b; 
+    }
+    else {
+        return a;
     }
 }

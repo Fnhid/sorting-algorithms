@@ -2,8 +2,8 @@
 
 int sort(int sortIdx, int arr[ARRAY_SIZE]){
 
-    int *arrTmp = new int[ARRAY_SIZE];
-    memcpy(arrTmp, arr, sizeof(int) * ARRAY_SIZE);
+    int arrTmp[ARRAY_SIZE];
+    copy_n(arr, ARRAY_SIZE, arrTmp);
 
     // the array is sorted in ascending order.
     system_clock::time_point startTime = system_clock::now();
@@ -53,12 +53,10 @@ int sort(int sortIdx, int arr[ARRAY_SIZE]){
 
     // test if array is sorted correctly
     if (testSort(arrTmp) == true) {
-        delete arrTmp;
         return (diffTime.count());
     }
     else {
-        cerr << "\nWarning : The array is not sorted correctly." << endl;
-        delete arrTmp;
+        cerr << "\nWarning : The array is not sorted correctly. " << endl;
         return -1;
     }
 
