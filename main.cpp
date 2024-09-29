@@ -10,13 +10,13 @@ int main(){
 
     bool isSortingEnabled[NUM_SORTS] = {
         false,           // Bubble Sort
-        false,           // Selection Sort
-        false,           // Quick Sort
+        true,           // Selection Sort
+        true,           // Quick Sort
         false,          // Heap Sort
-        true,          // Insertion Sort
+        false,          // Insertion Sort
         false,          // Merge Sort
-        true,          // Shell Sort
-        false,          // Radix Sort
+        false,          // Shell Sort
+        true,          // Radix Sort
         false           // Counting Sort
     };
     //--------------------------/

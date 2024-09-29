@@ -5,6 +5,11 @@ int sort(int sortIdx, int arr[ARRAY_SIZE]){
     // the array is sorted in ascending order.
     system_clock::time_point startTime = system_clock::now();
     
+    // cout << "before";
+    // for(int arrIdx = 0; arrIdx < ARRAY_SIZE; arrIdx++) {
+    //                 cout << arr[arrIdx] << " ";
+    // }
+    // cout << "\n";
     switch (sortIdx) {
         case 0: {
             bubbleSort(arr);
@@ -33,12 +38,21 @@ int sort(int sortIdx, int arr[ARRAY_SIZE]){
             shellSort(arr);
             break;
         }
+        case 7: {
+            radixSort(arr);
+            break;
+        }
 
         default: {
             return -1;
         }
     }
-    
+
+    // cout << "after";
+    // for(int arrIdx = 0; arrIdx < ARRAY_SIZE; arrIdx++) {
+    //                 cout << arr[arrIdx] << " ";
+    // }
+    // cout << "\n";
     
     system_clock::time_point stopTime = system_clock::now();
 
@@ -161,6 +175,24 @@ void shellSort(int arr[ARRAY_SIZE]){
     }
 }
 
+void radixSort(int arr[ARRAY_SIZE]){
+    queue<int> q[10];
+    int maxDigit = getMaxDigit(arr);
+    for(int digit = 1; digit <= maxDigit; digit++){
+        for(int arrIdx = 0; arrIdx <ARRAY_SIZE; arrIdx++){
+            q[arr[arrIdx] / (int) pow(10, digit-1) % 10 ].push(arr[arrIdx]);
+        }
+        int arrIdx = 0;
+        for(int qIdx = 0; qIdx <10; qIdx++){
+            while(!q[qIdx].empty()){
+                arr[arrIdx] = q[qIdx].front(); 
+                q[qIdx].pop();
+                arrIdx++;
+            }
+        }
+    }
+}
+
 //-----------
 
 int selectPivotIdx(int arr[ARRAY_SIZE], int low, int high){
@@ -221,4 +253,27 @@ bool testSort(int arr[ARRAY_SIZE]){
         }
     }
     return true;
+}
+
+int getMaxDigit(int arr[ARRAY_SIZE]){
+    int maxDigit = 0, digit;
+    for(int i = 0; i < ARRAY_SIZE; i++){
+        digit = 0;
+        for(int j = arr[i]; j > 0; j /= 10){
+            digit++;
+        }
+        if (maxDigit < digit) {
+            maxDigit = digit; 
+        }
+        
+    }
+    return maxDigit;
+}
+
+int pow(int base, int n){
+    int res = base;
+    for(int i=0;i<n;i++){
+        res *= n;
+    }
+    return res;
 }

@@ -3,11 +3,12 @@
 #include <random>
 #include <chrono>
 #include <cstring>
+#include <queue>
 
 //-------[EDIT THIS]-------/
-#define ARRAY_SIZE 1000
-#define MAX_NUMBER 100000
-#define ITERATION_SIZE 10000
+#define ARRAY_SIZE 10
+#define MAX_NUMBER 100
+#define ITERATION_SIZE 10
 
 // when PRINT_ARRAY is defined as true, the {best, worst} array is printed.
 // when PRINT_ARRAY is defined as false, this feature is disabled
@@ -96,9 +97,11 @@ void insertionSort(int arr[ARRAY_SIZE]);
 void insertionSort(int arr[ARRAY_SIZE], int low, int high, int gap); // used for shellSort
 void mergeSort(int arr[ARRAY_SIZE], int low, int high);
 void shellSort(int arr[ARRAY_SIZE]);
+void radixSort(int arr[ARRAY_SIZE]);
 
 // lemma things
 void swap(int& p1, int& p2);
 void merge(int arr[ARRAY_SIZE], int low, int high);
 int selectPivotIdx(int arr[ARRAY_SIZE], int low, int high);
 bool testSort(int arr[ARRAY_SIZE]);
+int getMaxDigit(int arr[ARRAY_SIZE]);
