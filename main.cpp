@@ -47,16 +47,16 @@ int main(){
         
 
         // Code about Progress Bar
-        cout << (iter * 100 / ITERATION_SIZE) << "% ["; 
-        for (int progressBar = 1; progressBar < (iter * 100 / ITERATION_SIZE) / 5 ; progressBar++){
-            cout << "=";
-        }
-        cout << ">";
-        for (int progressSpace = 0; progressSpace < 19 - ((iter * 100 / ITERATION_SIZE) / 5 + 1) ; progressSpace++){
-            cout << " ";
-        }
-        cout << "]";
-        cout << " ("  << iter << " / " << ITERATION_SIZE <<")\r" << flush;
+        // cout << (iter * 100 / ITERATION_SIZE) << "% ["; 
+        // for (int progressBar = 1; progressBar < (iter * 100 / ITERATION_SIZE) / 5 ; progressBar++){
+        //     cout << "=";
+        // }
+        // cout << ">";
+        // for (int progressSpace = 0; progressSpace < 19 - ((iter * 100 / ITERATION_SIZE) / 5 + 1) ; progressSpace++){
+        //     cout << " ";
+        // }
+        // cout << "]";
+        // cout << " ("  << iter << " / " << ITERATION_SIZE <<")\r" << flush;
         //------------------------
 
         for(int sortIdx=0;sortIdx<NUM_SORTS;sortIdx++){
