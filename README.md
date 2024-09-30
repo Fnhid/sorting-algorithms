@@ -23,7 +23,7 @@ make clean
 - [ ] Heap Sort
 - [X] Insertion Sort
 - [X] Merge Sort
-- [ ] Shell Sort
-- [ ] Radix Sort
+- [X] Shell Sort
+- [X] Radix Sort
 - [ ] Counting Sort
     

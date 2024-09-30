@@ -2,35 +2,41 @@
 
 int sort(int sortIdx, int arr[ARRAY_SIZE]){
 
+    int arrTmp[ARRAY_SIZE];
+    copy_n(arr, ARRAY_SIZE, arrTmp);
+
     // the array is sorted in ascending order.
     system_clock::time_point startTime = system_clock::now();
-    
     switch (sortIdx) {
         case 0: {
-            bubbleSort(arr);
+            bubbleSort(arrTmp);
             break;
         } 
         case 1: {
-            selectionSort(arr);
+            selectionSort(arrTmp);
             break;
         }
         case 2: {
-            quickSort(arr, 0, ARRAY_SIZE-1);
+            quickSort(arrTmp, 0, ARRAY_SIZE-1);
             break;
         }
         case 3: { // heapSort
             return -1; // 🚧🚧
         }
         case 4: {
-            insertionSort(arr);
+            insertionSort(arrTmp);
             break;
         }
         case 5: {
-            mergeSort(arr, 0, ARRAY_SIZE-1);
+            mergeSort(arrTmp, 0, ARRAY_SIZE-1);
             break;
         }
         case 6: {
-            shellSort(arr);
+            shellSort(arrTmp);
+            break;
+        }
+        case 7: {
+            radixSort(arrTmp);
             break;
         }
 
@@ -39,19 +45,19 @@ int sort(int sortIdx, int arr[ARRAY_SIZE]){
         }
     }
     
-    
     system_clock::time_point stopTime = system_clock::now();
 
     nanoseconds diffTime = duration_cast<nanoseconds>(stopTime - startTime);
     
     // test if array is sorted correctly
-    if (testSort(arr) == true) {
+    if (testSort(arrTmp) == true) {
         return (diffTime.count());
     }
     else {
-        cerr << "\nWarning : The array is not sorted correctly." << endl;
+        cerr << "\nWarning : The array is not sorted correctly. " << endl;
         return -1;
     }
+
 }
 
 void bubbleSort(int arr[ARRAY_SIZE]){
@@ -81,35 +87,33 @@ void selectionSort(int arr[ARRAY_SIZE]){
 }
 
 void quickSort(int arr[ARRAY_SIZE], int low, int high){
-    if(low >= high) return; // base condition
-    
-    int left = low;
-    int right = high;
-    int pivot = selectPivotIdx(arr, left, right);
-    int temp;
+    // this quickSort uses the three-of-median method
 
-    while(left <= right)
-    {
-        while (arr[left] < arr[pivot]) {
-            left++;
+    if (low < high){
+        threeOfMidian(arr, low, high);
+
+        if(high-low >= 3){
+            int pivot = arr[high-1];
+            int left = low;
+            int right = high-1;
+
+            while(left < right)
+            {
+                while (arr[++left] < pivot && left<high );
+                while (arr[--right] > pivot && low<right);
+                
+                if(left >= right) break;
+                swap(arr[left], arr[right]);   
+            }
+
+                swap(arr[high-1], arr[left]); // swap pivot to right
+                quickSort(arr, low, left-1);
+                quickSort(arr, left+1, high);
+            
         }
-        while (arr[right] > arr[pivot]){
-            right--;
-        }
-        if (left <= right){
-            swap(arr[left], arr[right]);
-            left++;
-            right--;
-        }
+        
     }
-
-    if(right > low)
-        quickSort(arr, low, right);
-    if(left < high)
-        quickSort(arr, left, high);
     
-
-
 }
 
 void insertionSort(int arr[ARRAY_SIZE]){
@@ -161,16 +165,38 @@ void shellSort(int arr[ARRAY_SIZE]){
     }
 }
 
+void radixSort(int arr[ARRAY_SIZE]){
+    queue<int> q[10];
+    int maxDigit = getMaxDigit(arr);
+    for(int digit = 1; digit <= maxDigit; digit++){
+        for(int arrIdx = 0; arrIdx <ARRAY_SIZE; arrIdx++){
+            q[arr[arrIdx] / (int) pow(10, digit-1) % 10 ].push(arr[arrIdx]);
+        }
+        int arrIdx = 0;
+        for(int qIdx = 0; qIdx <10; qIdx++){
+            while(!q[qIdx].empty()){
+                arr[arrIdx] = q[qIdx].front(); 
+                q[qIdx].pop();
+                arrIdx++;
+            }
+        }
+    }
+}
+
 //-----------
 
-int selectPivotIdx(int arr[ARRAY_SIZE], int low, int high){
-    int p1 = arr[low];
-    int p2 = arr[high];
-    int p3 = arr[(high + low) / 2];
+void threeOfMidian(int arr[ARRAY_SIZE], int low, int high) {
+    
+    // used for quick sort
+    // sort three values which idx is {low, mid, high}
+    // save pivot value to arr[high-1]
 
-    if(p2 <= p1 && p1 <= p3 || p3 <= p1 && p1 <= p2) return low;
-    else if(p1 <= p2 && p2 <= p3 || p3 <= p2 && p2 <= p1) return high;
-    else return (high+low)/2;
+    int mid = (low + high) / 2;
+    if(arr[low]>arr[mid]) swap(arr[low], arr[mid]);
+	if(arr[mid]>arr[high]) swap(arr[mid], arr[high]);
+	if(arr[low]>arr[mid]) swap(arr[low], arr[mid]);
+
+    swap(arr[mid], arr[high-1]);
     
 }
 
@@ -221,4 +247,27 @@ bool testSort(int arr[ARRAY_SIZE]){
         }
     }
     return true;
+}
+
+int getMaxDigit(int arr[ARRAY_SIZE]){
+    int maxDigit = 0, digit;
+    for(int i = 0; i < ARRAY_SIZE; i++){
+        digit = 0;
+        for(int j = arr[i]; j > 0; j /= 10){
+            digit++;
+        }
+        if (maxDigit < digit) {
+            maxDigit = digit; 
+        }
+        
+    }
+    return maxDigit;
+}
+
+int pow(int base, int n){
+    int res = base;
+    for(int i=0;i<n;i++){
+        res *= n;
+    }
+    return res;
 }
