@@ -199,7 +199,7 @@ void radixSort(int arr[ARRAY_SIZE]){
 }
 
 void bogoSort(int arr[ARRAY_SIZE]){
-    while (!testSort(arr)){
+    while (!testSort(arr, false)){
         shuffleArray(arr);
     }
 }
@@ -263,11 +263,11 @@ void swap(int& p1, int& p2) {
     p2 = tmp;
 }
 
-bool testSort(int arr[ARRAY_SIZE]){
+bool testSort(int arr[ARRAY_SIZE], bool debug=true){
     for(int i=0;i<ARRAY_SIZE-1;i++){
         if(arr[i] > arr[i+1]){
             // not sorted correctly
-            cout << "[?] { idx " << i << ": " << arr[i] << ", idx " << i+1 << ": " << arr[i+1] << " }\n"<< endl;
+            if (debug) cout << "[?] { idx " << i << ": " << arr[i] << ", idx " << i+1 << ": " << arr[i+1] << " }\n"<< endl;
             return false;
         }
     }
