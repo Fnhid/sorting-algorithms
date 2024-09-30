@@ -1,4 +1,8 @@
 #include "sort.h"
+#include <random>
+#include <time.h>
+
+static random_device rd;
 
 int sort(int sortIdx, int arr[ARRAY_SIZE]){
 
@@ -38,6 +42,17 @@ int sort(int sortIdx, int arr[ARRAY_SIZE]){
         case 7: {
             radixSort(arrTmp);
             break;
+        }
+        case 8: {// Counting Sort
+            return -1;
+        }
+        case 9: {
+            bogoSort(arrTmp);
+            break;
+        }
+        case 10: {
+            // bogobogoSort
+            return -1;
         }
 
         default: {
@@ -183,6 +198,16 @@ void radixSort(int arr[ARRAY_SIZE]){
     }
 }
 
+void bogoSort(int arr[ARRAY_SIZE]){
+    while (!testSort(arr)){
+        shuffleArray(arr);
+    }
+}
+
+void bogobogoSort(int arr[ARRAY_SIZE]){
+    // TODO: bogobogo sort
+}
+
 //-----------
 
 void threeOfMidian(int arr[ARRAY_SIZE], int low, int high) {
@@ -270,4 +295,16 @@ int pow(int base, int n){
         res *= n;
     }
     return res;
+}
+
+void shuffleArray(int arr[ARRAY_SIZE]){
+    mt19937 randset(rd());
+    uniform_int_distribution<int> rnd(0,ARRAY_SIZE);
+
+    for (int i=0;i<ARRAY_SIZE;i++){
+        int index1 = rnd(randset);
+        int index2 = rnd(randset);
+
+        swap(arr[index1], arr[index2]);
+    }
 }

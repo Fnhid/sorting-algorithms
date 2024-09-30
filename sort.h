@@ -10,7 +10,7 @@
 
 //-------[EDIT THIS]-------/
 
-#define ARRAY_SIZE 3000
+#define ARRAY_SIZE 5
 #define MAX_NUMBER 100000
 #define ITERATION_SIZE 100
 
@@ -102,6 +102,8 @@ void insertionSort(int arr[ARRAY_SIZE], int low, int high, int gap); // used for
 void mergeSort(int arr[ARRAY_SIZE], int low, int high);
 void shellSort(int arr[ARRAY_SIZE]);
 void radixSort(int arr[ARRAY_SIZE]);
+void bogoSort(int arr[ARRAY_SIZE]);
+void bogobogoSort(int arr[ARRAY_SIZE]);
 
 // lemma things
 void swap(int& p1, int& p2);
@@ -109,3 +111,4 @@ void merge(int arr[ARRAY_SIZE], int low, int high);
 void threeOfMidian(int arr[ARRAY_SIZE], int low, int high);
 bool testSort(int arr[ARRAY_SIZE]);
 int getMaxDigit(int arr[ARRAY_SIZE]);
+void shuffleArray(int arr[ARRAY_SIZE]);

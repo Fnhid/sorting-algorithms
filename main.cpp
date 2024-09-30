@@ -11,13 +11,15 @@ int main(){
     bool isSortingEnabled[NUM_SORTS] = {
         false,           // Bubble Sort
         false,           // Selection Sort
-        true,           // Quick Sort
+        false,           // Quick Sort
         false,          // Heap Sort
         false,          // Insertion Sort
         false,          // Merge Sort
         false,          // Shell Sort
         false,          // Radix Sort
-        false           // Counting Sort
+        false,           // Counting Sort
+        true,           // Bogo Sort
+        false           // Bogobogo Sort
     };
     //--------------------------/
 
@@ -32,7 +34,9 @@ int main(){
         SortPerformance((char *) "Merge Sort"),
         SortPerformance((char *) "Shell Sort"),
         SortPerformance((char *) "Radix Sort"),
-        SortPerformance((char *) "Counting Sort")
+        SortPerformance((char *) "Counting Sort"),
+        SortPerformance((char *) "Bogo Sort"),
+        SortPerformance((char *) "Bogobogo Sort")
     };  
 
     bool sortPerformanceError[NUM_SORTS] = {false};
