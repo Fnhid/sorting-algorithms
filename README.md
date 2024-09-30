@@ -26,4 +26,6 @@ make clean
 - [X] Shell Sort
 - [X] Radix Sort
 - [ ] Counting Sort
+- [X] Bogo Sort
+- [ ] Bogobogo Sort
     
