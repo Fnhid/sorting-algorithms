@@ -15,6 +15,11 @@ remove
 make clean
 ```
 
+rebuild (when output file is already built and you just changed header file, use this command.)
+```bash
+make rebuild
+```
+
 ### To-Do
 - [X] Performance Test
 - [X] Bubble Sort

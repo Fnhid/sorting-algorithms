@@ -263,7 +263,7 @@ void swap(int& p1, int& p2) {
     p2 = tmp;
 }
 
-bool testSort(int arr[ARRAY_SIZE], bool debug=true){
+bool testSort(int arr[ARRAY_SIZE], bool debug){
     for(int i=0;i<ARRAY_SIZE-1;i++){
         if(arr[i] > arr[i+1]){
             // not sorted correctly
