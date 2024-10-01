@@ -15,6 +15,11 @@ remove
 make clean
 ```
 
+remove and build and execute at once
+```bash
+make clean && make && ./main
+```
+
 ### To-Do
 - [X] Performance Test
 - [X] Bubble Sort
