@@ -30,7 +30,7 @@ make rebuild
 - [X] Merge Sort
 - [X] Shell Sort
 - [X] Radix Sort
-- [ ] Counting Sort
+- [X] Counting Sort
 - [X] Bogo Sort
 - [ ] Bogobogo Sort
     

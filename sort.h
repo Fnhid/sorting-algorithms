@@ -10,14 +10,14 @@
 
 //-------[EDIT THIS]-------/
 
-#define ARRAY_SIZE 5
-#define MAX_NUMBER 100000
-#define ITERATION_SIZE 100
+#define ARRAY_SIZE 10000
+#define MAX_NUMBER 1000
+#define ITERATION_SIZE 10000
 
 // when PRINT_ARRAY is defined as true, the {best, worst} array is printed.
 // when PRINT_ARRAY is defined as false, this feature is disabled
 
-#define PRINT_ARRAY false
+#define PRINT_ARRAY true
 
 //-------------------------/
 
@@ -102,6 +102,7 @@ void insertionSort(int arr[ARRAY_SIZE], int low, int high, int gap); // used for
 void mergeSort(int arr[ARRAY_SIZE], int low, int high);
 void shellSort(int arr[ARRAY_SIZE]);
 void radixSort(int arr[ARRAY_SIZE]);
+void countingSort(int arr[ARRAY_SIZE]);
 void bogoSort(int arr[ARRAY_SIZE]);
 void bogobogoSort(int arr[ARRAY_SIZE]);
 
