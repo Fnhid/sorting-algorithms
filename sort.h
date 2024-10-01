@@ -109,6 +109,6 @@ void bogobogoSort(int arr[ARRAY_SIZE]);
 void swap(int& p1, int& p2);
 void merge(int arr[ARRAY_SIZE], int low, int high);
 void threeOfMidian(int arr[ARRAY_SIZE], int low, int high);
-bool testSort(int arr[ARRAY_SIZE]);
+bool testSort(int arr[ARRAY_SIZE], bool debug=true);
 int getMaxDigit(int arr[ARRAY_SIZE]);
 void shuffleArray(int arr[ARRAY_SIZE]);

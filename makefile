@@ -9,3 +9,6 @@ sort.o: sort.cpp
 
 clean:
 	rm main *.o
+
+rebuild: clean
+	$(MAKE)
