@@ -6,16 +6,18 @@
 * To select which sorting algorithms to execute, modify ```isSortingEnabled``` in ```main.cpp```
 
 ### How to build
-build
+* build
 ```bash
 make
 ```
-remove
+* remove
 ```bash
 make clean
 ```
 
-rebuild (when output file is already built and you just changed header file, use this command.)
+* rebuild
+  
+when output file is already built and you just changed header file, use this command.
 ```bash
 make rebuild
 ```
