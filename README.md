@@ -15,9 +15,9 @@ remove
 make clean
 ```
 
-remove and build and execute at once
+rebuild (when output file is already built and you just changed header file, use this command.)
 ```bash
-make clean && make && ./main
+make rebuild
 ```
 
 ### To-Do
