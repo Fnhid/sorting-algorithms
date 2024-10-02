@@ -1,15 +1,17 @@
 
-# 🏗️ **Sorting Algorithms Playground** 🚧
+# 🏗️ **Sorting Algorithms** 🚧
 
-Welcome to the **Sorting Algorithms Playground**! Here, you'll find a variety of sorting algorithms in action. Whether you're optimizing performance or experimenting with different sorts, this project has you covered. 💻✨
+Welcome to the **Sorting Algorithms**! Here, you'll find a variety of sorting algorithms in action. Whether you're optimizing performance or experimenting with different sorts, this project has you covered. 💻✨
 
 ---
 
-🚧 **This project is still under construction!** New features and sorting algorithms are actively being added. Stay tuned for updates! 🚧
+🚧 **This project is still under construction!** New features and sorting algorithms are actively being added. 🚧
 
 ---
 
 ## ⚙️ **Configuration Options**
+
+you can edit these options in sort.h!
 
 - **Array Size & Number**:  
   Customize the size of arrays by modifying `ARRAY_SIZE` and `MAX_NUMBER` in **`sort.h`**.  
@@ -63,6 +65,3 @@ Check out the progress on implemented sorting algorithms:
 - [X] **Bead Sort (Gravity Sort)** (*Let physics do the work!*)  
 
 ---
-
-Feel free to explore and tweak the settings to see how different sorting algorithms perform! 🚀  
-Happy coding! ✨
