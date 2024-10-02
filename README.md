@@ -34,5 +34,5 @@ make rebuild
 - [X] Radix Sort
 - [X] Counting Sort
 - [X] Bogo Sort
-- [ ] Bogobogo Sort
+- [X] Bogobogo Sort
     
