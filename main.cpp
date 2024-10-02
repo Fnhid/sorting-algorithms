@@ -17,8 +17,8 @@ int main(){
         false,          // Merge Sort
         false,          // Shell Sort
         false,          // Radix Sort
-        false,           // Counting Sort
-        true,           // Bogo Sort
+        true,           // Counting Sort
+        false,           // Bogo Sort
         false           // Bogobogo Sort
     };
     //--------------------------/

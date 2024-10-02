@@ -43,8 +43,9 @@ int sort(int sortIdx, int arr[ARRAY_SIZE]){
             radixSort(arrTmp);
             break;
         }
-        case 8: {// Counting Sort
-            return -1;
+        case 8: {
+            countingSort(arrTmp);
+            break;
         }
         case 9: {
             bogoSort(arrTmp);
@@ -197,6 +198,32 @@ void radixSort(int arr[ARRAY_SIZE]){
         }
     }
 }
+
+void countingSort(int arr[ARRAY_SIZE]){
+    int maxValue = 0, result[ARRAY_SIZE] = {};
+    for(int i=0;i<ARRAY_SIZE;i++){
+        if(arr[i] > maxValue) maxValue = arr[i];
+    }
+
+    int* counting = new int[maxValue+1];
+    memset(counting, 0, (maxValue+1)*sizeof(int));
+    for(int i=0;i<ARRAY_SIZE;i++){
+        counting[arr[i]]++;
+    }    
+
+    // prefix sum
+    for(int i=0;i<maxValue;i++){
+        counting[i+1] += counting[i]; 
+    }
+    
+    for(int i=ARRAY_SIZE-1;i>=0;i--){
+
+        result[--counting[arr[i]]] = arr[i];
+    }
+    copy_n(result, ARRAY_SIZE, arr);    
+    delete[] counting;
+}
+
 
 void bogoSort(int arr[ARRAY_SIZE]){
     while (!testSort(arr, false)){
