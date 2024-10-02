@@ -1,6 +1,10 @@
 #include "sort.h"
 #include <random>
 #include <time.h>
+#include <vector>
+#include <thread>
+#include <algorithm>
+#include <mutex>
 
 static random_device rd;
 
@@ -53,6 +57,10 @@ int sort(int sortIdx, int arr[ARRAY_SIZE]){
         }
         case 10: {
             bogobogoSort(arrTmp);
+            break;
+        }
+        case 11: {
+            beadSort(arrTmp);
             break;
         }
 
@@ -233,6 +241,54 @@ void bogoSort(int arr[ARRAY_SIZE]){
 
 void bogobogoSort(int arr[ARRAY_SIZE]){
     while (!bogobogoSortRecursive(arr, ARRAY_SIZE));
+}
+
+void beadSort(int a[ARRAY_SIZE]){
+    using namespace std;
+    vector<int> arr(a, a+ARRAY_SIZE);
+    int max = *max_element(arr.begin(), arr.end());
+
+    vector<vector<int>> beads(arr.size(), vector<int>(max, 0));
+
+    for (int i = 0; i < arr.size(); i++) {
+        fill(beads[i].begin(), beads[i].begin() + arr[i], 1);
+    }
+
+    unsigned int numThreads = thread::hardware_concurrency();
+    if (numThreads == 0) numThreads = 4;
+
+
+    auto processBeads = [&](int startCol, int endCol) {
+        for (int j = startCol; j < endCol; j++) {
+            int sum = 0;
+            for (int i = 0; i < arr.size(); i++) {
+                sum += beads[i][j];
+                beads[i][j] = 0;
+            }
+            for (int i = arr.size() - sum; i < arr.size(); i++) {
+                beads[i][j] = 1;
+            }
+        }
+    };
+
+    vector<thread> threads;
+    int colsPerThread = max / numThreads;
+
+    for (unsigned int t = 0; t < numThreads; t++) {
+        int startCol = t * colsPerThread;
+        int endCol = (t == numThreads - 1) ? max : startCol + colsPerThread;
+        threads.push_back(thread(processBeads, startCol, endCol));
+    }
+
+    for (auto& th : threads) {
+        th.join();
+    }
+
+    for (int i = 0; i < arr.size(); i++) {
+        int j = 0;
+        while (j < max && beads[i][j]) j++;
+        a[i] = j;
+    }
 }
 
 //-----------

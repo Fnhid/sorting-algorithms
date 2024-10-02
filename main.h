@@ -1,7 +1,7 @@
 #pragma once
 #include "sort.h"
 
-#define NUM_SORTS 11
+#define NUM_SORTS 12
 
 int main();
 void genRandomArr(int* arr);
