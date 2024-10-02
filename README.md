@@ -33,11 +33,22 @@ make
 ```
 
 **Remove generated files**:
+=======
+### How to build
+* build
+```bash
+make
+```
+* remove
 ```bash
 make clean
 ```
 
 **Rebuild** (use this when the output file is already built and only header files have changed):
+=======
+* rebuild
+  
+when output file is already built and you just changed header file, use this command.
 ```bash
 make rebuild
 ```
