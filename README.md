@@ -1,7 +1,7 @@
 
-# 🏗️ **Sorting Algorithms** 🚧
+# 🏗️ **Sorting Algorithms Playground** 🚧
 
-Welcome to the **Sorting Algorithms**! Here, you'll find a variety of sorting algorithms in action. Whether you're optimizing performance or experimenting with different sorts, this project has you covered. 💻✨
+Welcome to the **Sorting Algorithms Playground**! Here, you'll find a variety of sorting algorithms in action. Whether you're optimizing performance or experimenting with different sorts, this project has you covered. 💻✨
 
 ---
 
@@ -33,22 +33,11 @@ make
 ```
 
 **Remove generated files**:
-=======
-### How to build
-* build
-```bash
-make
-```
-* remove
 ```bash
 make clean
 ```
 
 **Rebuild** (use this when the output file is already built and only header files have changed):
-=======
-* rebuild
-  
-when output file is already built and you just changed header file, use this command.
 ```bash
 make rebuild
 ```
