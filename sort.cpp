@@ -52,8 +52,8 @@ int sort(int sortIdx, int arr[ARRAY_SIZE]){
             break;
         }
         case 10: {
-            // bogobogoSort
-            return -1;
+            bogobogoSort(arrTmp);
+            break;
         }
 
         default: {
@@ -232,7 +232,7 @@ void bogoSort(int arr[ARRAY_SIZE]){
 }
 
 void bogobogoSort(int arr[ARRAY_SIZE]){
-    // TODO: bogobogo sort
+    while (!bogobogoSortRecursive(arr, ARRAY_SIZE));
 }
 
 //-----------
@@ -290,8 +290,8 @@ void swap(int& p1, int& p2) {
     p2 = tmp;
 }
 
-bool testSort(int arr[ARRAY_SIZE], bool debug){
-    for(int i=0;i<ARRAY_SIZE-1;i++){
+bool testSort(int arr[ARRAY_SIZE], bool debug, int size){
+    for(int i=0;i<size-1;i++){
         if(arr[i] > arr[i+1]){
             // not sorted correctly
             if (debug) cout << "[?] { idx " << i << ": " << arr[i] << ", idx " << i+1 << ": " << arr[i+1] << " }\n"<< endl;
@@ -324,14 +324,29 @@ int pow(int base, int n){
     return res;
 }
 
-void shuffleArray(int arr[ARRAY_SIZE]){
+void shuffleArray(int arr[ARRAY_SIZE], int size){
     mt19937 randset(rd());
-    uniform_int_distribution<int> rnd(0,ARRAY_SIZE);
+    uniform_int_distribution<int> rnd(0,size);
 
-    for (int i=0;i<ARRAY_SIZE;i++){
+    for (int i=0;i<size;i++){
         int index1 = rnd(randset);
         int index2 = rnd(randset);
 
         swap(arr[index1], arr[index2]);
     }
+}
+
+bool bogobogoSortRecursive(int arr[ARRAY_SIZE], int n) {
+    if (n <= 1) return true;
+
+    if (!bogobogoSortRecursive(arr, n - 1)) {
+        return false;
+    }
+
+    if (!testSort(arr, false, n)) {
+        shuffleArray(arr, n);
+        return false;
+    }
+
+    return true;
 }

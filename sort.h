@@ -10,14 +10,14 @@
 
 //-------[EDIT THIS]-------/
 
-#define ARRAY_SIZE 10000
+#define ARRAY_SIZE 7
 #define MAX_NUMBER 1000
-#define ITERATION_SIZE 10000
+#define ITERATION_SIZE 100
 
 // when PRINT_ARRAY is defined as true, the {best, worst} array is printed.
 // when PRINT_ARRAY is defined as false, this feature is disabled
 
-#define PRINT_ARRAY true
+#define PRINT_ARRAY false
 
 //-------------------------/
 
@@ -110,6 +110,7 @@ void bogobogoSort(int arr[ARRAY_SIZE]);
 void swap(int& p1, int& p2);
 void merge(int arr[ARRAY_SIZE], int low, int high);
 void threeOfMidian(int arr[ARRAY_SIZE], int low, int high);
-bool testSort(int arr[ARRAY_SIZE], bool debug=true);
+bool testSort(int arr[ARRAY_SIZE], bool debug=true, int size=ARRAY_SIZE);
 int getMaxDigit(int arr[ARRAY_SIZE]);
-void shuffleArray(int arr[ARRAY_SIZE]);
+void shuffleArray(int arr[ARRAY_SIZE], int size=ARRAY_SIZE);
+bool bogobogoSortRecursive(int arr[ARRAY_SIZE], int n);
