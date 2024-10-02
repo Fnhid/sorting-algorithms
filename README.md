@@ -33,4 +33,5 @@ make rebuild
 - [X] Counting Sort
 - [X] Bogo Sort
 - [X] Bogobogo Sort
+- [X] Bead Sort(Gravity Sort)
     
