@@ -1,4 +1,8 @@
 #pragma once
+
+#include <vector>
+#include <thread>
+#include <mutex>
 #include <iostream>
 #include <random>
 #include <chrono>
@@ -10,15 +14,9 @@
 
 //-------[EDIT THIS]-------/
 
-<<<<<<< HEAD
 #define ARRAY_SIZE 100000
 #define MAX_NUMBER 9999
 #define ITERATION_SIZE 10000
-=======
-#define ARRAY_SIZE 1000
-#define MAX_NUMBER 1000
-#define ITERATION_SIZE 500
->>>>>>> 9bc81967665160d2fd7e0b1deee271f23af49c2c
 
 // when PRINT_ARRAY is defined as true, the {best, worst} array is printed.
 // when PRINT_ARRAY is defined as false, this feature is disabled

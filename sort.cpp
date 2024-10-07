@@ -1,10 +1,4 @@
 #include "sort.h"
-#include <random>
-#include <time.h>
-#include <vector>
-#include <thread>
-#include <algorithm>
-#include <mutex>
 
 static random_device rd;
 
