@@ -25,7 +25,7 @@ make rebuild
 - [X] Bubble Sort
 - [X] Selection Sort
 - [X] Quick Sort
-- [ ] Heap Sort
+- [X] Heap Sort
 - [X] Insertion Sort
 - [X] Merge Sort
 - [X] Shell Sort
@@ -33,4 +33,4 @@ make rebuild
 - [X] Counting Sort
 - [X] Bogo Sort
 - [X] Bogobogo Sort
-    
+- [ ] Sorting Parallelization    

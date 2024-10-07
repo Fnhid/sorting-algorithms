@@ -24,8 +24,9 @@ int sort(int sortIdx, int arr[ARRAY_SIZE]){
             quickSort(arrTmp, 0, ARRAY_SIZE-1);
             break;
         }
-        case 3: { // heapSort
-            return -1; // 🚧🚧
+        case 3: { 
+            heapSort(arrTmp);
+            break;
         }
         case 4: {
             insertionSort(arrTmp);
@@ -132,6 +133,62 @@ void quickSort(int arr[ARRAY_SIZE], int low, int high){
     
 }
 
+void heapSort(int arr[ARRAY_SIZE]){
+    // idx 0 is not used
+    int heap[ARRAY_SIZE+1] = {}; 
+    int heapSize = ARRAY_SIZE;
+
+    for(int i=1;i<=heapSize;i++){ // making minHeap
+        int idx = i;
+        heap[i] = arr[i-1];
+        while(idx > 1 && heap[idx / 2] > heap[idx]){
+            swap(heap[idx / 2], heap[idx]);
+            idx /= 2;
+        }
+    }
+
+
+    for(int i=0;i<ARRAY_SIZE;i++){
+        int idx = 1;
+        arr[i] = heap[1];
+        heap[1] = heap[heapSize];
+        heapSize--;
+        
+        while(idx * 2 <= heapSize){
+            int branchDirection; // 0 is left, 1 is right.
+            
+            if (heap[idx] > heap[idx * 2] && idx * 2 == heapSize) {
+                branchDirection = 0;
+            }
+            else if(heap[idx] <= heap[idx * 2] && heap[idx] <= heap[idx * 2 + 1]) {
+                break;
+            }
+            else if(heap[idx] > heap[idx * 2] && heap[idx] <= heap[idx * 2 + 1]) {
+                branchDirection = 0;
+            }
+            else if(heap[idx] <= heap[idx * 2] && heap[idx] > heap[idx * 2 + 1]) {
+                branchDirection = 1;
+            }
+            else {
+                if (heap[idx * 2] < heap[idx * 2 + 1]) {
+                    branchDirection = 0;
+                }
+                else {
+                    branchDirection = 1;
+                }
+            }
+                
+            swap(heap[idx], heap[idx * 2 + branchDirection]);
+            idx = idx * 2 + branchDirection;
+
+        }
+        
+    }
+
+
+
+}
+
 void insertionSort(int arr[ARRAY_SIZE]){
     int i, j, key;
     for(i=1;i<ARRAY_SIZE;i++) {
@@ -236,6 +293,8 @@ void bogobogoSort(int arr[ARRAY_SIZE]){
 }
 
 //-----------
+
+
 
 void threeOfMidian(int arr[ARRAY_SIZE], int low, int high) {
     

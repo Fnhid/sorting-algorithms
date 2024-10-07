@@ -12,14 +12,14 @@ int main(){
         false,           // Bubble Sort
         false,           // Selection Sort
         false,           // Quick Sort
-        false,          // Heap Sort
+        true,          // Heap Sort
         false,          // Insertion Sort
         false,          // Merge Sort
         false,          // Shell Sort
         false,          // Radix Sort
         false,           // Counting Sort
-        true,           // Bogo Sort
-        true           // Bogobogo Sort
+        false,           // Bogo Sort
+        false           // Bogobogo Sort
     };
     //--------------------------/
 

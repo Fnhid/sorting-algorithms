@@ -10,9 +10,9 @@
 
 //-------[EDIT THIS]-------/
 
-#define ARRAY_SIZE 7
-#define MAX_NUMBER 1000
-#define ITERATION_SIZE 100
+#define ARRAY_SIZE 100000
+#define MAX_NUMBER 9999
+#define ITERATION_SIZE 10000
 
 // when PRINT_ARRAY is defined as true, the {best, worst} array is printed.
 // when PRINT_ARRAY is defined as false, this feature is disabled
@@ -96,7 +96,7 @@ int sort(int sortIdx, int arr[ARRAY_SIZE]);
 void bubbleSort(int arr[ARRAY_SIZE]);
 void selectionSort(int arr[ARRAY_SIZE]);
 void quickSort(int arr[ARRAY_SIZE], int low, int high);
-
+void heapSort(int arr[ARRAY_SIZE]);
 void insertionSort(int arr[ARRAY_SIZE]);
 void insertionSort(int arr[ARRAY_SIZE], int low, int high, int gap); // used for shellSort
 void mergeSort(int arr[ARRAY_SIZE], int low, int high);
