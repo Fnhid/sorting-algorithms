@@ -10,9 +10,15 @@
 
 //-------[EDIT THIS]-------/
 
+<<<<<<< HEAD
 #define ARRAY_SIZE 100000
 #define MAX_NUMBER 9999
 #define ITERATION_SIZE 10000
+=======
+#define ARRAY_SIZE 1000
+#define MAX_NUMBER 1000
+#define ITERATION_SIZE 500
+>>>>>>> 9bc81967665160d2fd7e0b1deee271f23af49c2c
 
 // when PRINT_ARRAY is defined as true, the {best, worst} array is printed.
 // when PRINT_ARRAY is defined as false, this feature is disabled
@@ -105,6 +111,7 @@ void radixSort(int arr[ARRAY_SIZE]);
 void countingSort(int arr[ARRAY_SIZE]);
 void bogoSort(int arr[ARRAY_SIZE]);
 void bogobogoSort(int arr[ARRAY_SIZE]);
+void beadSort(int a[ARRAY_SIZE]);
 
 // lemma things
 void swap(int& p1, int& p2);
