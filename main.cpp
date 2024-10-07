@@ -12,6 +12,16 @@ int main(){
         false,           // Bubble Sort
         false,           // Selection Sort
         false,           // Quick Sort
+<<<<<<< HEAD
+        true,          // Heap Sort
+        false,          // Insertion Sort
+        false,          // Merge Sort
+        false,          // Shell Sort
+        false,          // Radix Sort
+        false,           // Counting Sort
+        false,           // Bogo Sort
+        false           // Bogobogo Sort
+=======
         false,           // Heap Sort
         false,           // Insertion Sort
         false,           // Merge Sort
@@ -21,6 +31,7 @@ int main(){
         false,           // Bogo Sort
         false,           // Bogobogo Sort
         true             // Bead Sort
+>>>>>>> 9bc81967665160d2fd7e0b1deee271f23af49c2c
     };
     //--------------------------/
 

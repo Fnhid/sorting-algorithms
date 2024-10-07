@@ -54,7 +54,7 @@ Check out the progress on implemented sorting algorithms:
 - [X] **Bubble Sort**  
 - [X] **Selection Sort**  
 - [X] **Quick Sort**  
-- [ ] **Heap Sort** (*Coming Soon!*)  
+- [X] **Heap Sort**  
 - [X] **Insertion Sort**  
 - [X] **Merge Sort**  
 - [X] **Shell Sort**  
@@ -64,4 +64,5 @@ Check out the progress on implemented sorting algorithms:
 - [X] **Bogobogo Sort** (*Extreme chaos!*)  
 - [X] **Bead Sort (Gravity Sort)** (*Let physics do the work!*)  
 
+- [ ] **Sorting Parallelization** 
 ---

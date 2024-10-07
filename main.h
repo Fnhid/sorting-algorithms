@@ -1,5 +1,8 @@
 #pragma once
 #include "sort.h"
+#include <vector>
+#include <future>
+
 
 #define NUM_SORTS 12
 
